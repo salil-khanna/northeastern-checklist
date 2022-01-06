@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import '../CSS/Checkbox.css'
 
 const Checkbox = ({value, ifChecked, displayText, number}) => {
