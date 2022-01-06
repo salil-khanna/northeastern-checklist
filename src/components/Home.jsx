@@ -148,7 +148,8 @@ const Home = () => {
 
                             <div className = "text-center">
                                 <h3> Total Count: {totalChecked} / 100 </h3>
-                                { totalChecked < 25 ?<h5> Do you even go to Northeastern? </h5> :
+                                { totalChecked < 5 ?<h5> You must be a BU student </h5> :
+                                totalChecked < 25 ?<h5> Do you even go to Northeastern? </h5> :
                                     totalChecked < 50 ? <h5> Still have a few more semesters to get there! </h5> :
                                     totalChecked < 75 ? <h5> Either a senior or you have a slight obsession with NEU </h5> :
                                     totalChecked < 99 ? <h5> The Top 1% of Northeastern Students </h5> :
