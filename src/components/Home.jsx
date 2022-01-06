@@ -130,7 +130,7 @@ const Home = () => {
                     
                     <div className="box-header">
                         <div className = "text-center">
-                            <h1>The Northeastern Checklist</h1>
+                            <h1>The Northeastern Experience Checklist</h1>
                             <p> Hit the checkboxes on your way down to to see your total score!</p>
                         </div>                
                     </div>
