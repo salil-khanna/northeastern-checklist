@@ -162,6 +162,7 @@ const Home = () => {
                     <br/>
                 </div>
             </div>
+            {!isMobile && <br /> }
 
 
 
