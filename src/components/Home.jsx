@@ -116,7 +116,7 @@ const Home = () => {
         {value: 1, question: "Unironically used the word wicked in a conversation"},
         {value: 1, question: "Thought about doing or actually did research with a Northeastern professor "},
         {value: 1, question: "Know at least one historical fact about campus history"},
-        {value: 1, question: "Did the naked run"},
+        {value: 1, question: "Did the underwear run"},
         {value: 1, question: "Have a love hate relationship with Northeastern"},
 
     ]
