@@ -86,7 +86,7 @@ const Home = () => {
         {value: 1, question: "Drank Gong Cha on Huntington"},
         {value: 1, question: "Bought food/drinks from Dunkin at Shillman"},
         {value: 1, question: "Tried all of the restaurants in Curry Dining (including the Starbucks!)"},
-        {value: 1, question: "Wondered if the food was actually worth the money"},
+        {value: 1, question: "Wondered if campus food was actually worth the money"},
         {value: 1, question: "Shopped at the Target in Fenway"},
         {value: 1, question: "Visited the Prudential Mall "},
         {value: 1, question: "Taken a picture on top of one of the garage roofs"},
