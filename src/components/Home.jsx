@@ -39,7 +39,7 @@ const Home = () => {
         {value: 1, question: "Had a co-op bore you to death"},
         {value: 1, question: "Tried to explain your co-op schedule to someone outside of Northeastern but eventually gave up"},
         {value: 1, question: "Told someone you go to Northeastern but they had no clue about the university"},
-        {value: 1, question: "Told someone you go to Northeastern but they thought Northwestern"},
+        {value: 1, question: "Told someone you go to Northeastern but thought you meant Northwestern"},
         {value: 1, question: "Partied at a Northeastern frat"},
         {value: 1, question: "Partied at another university (frat/house)"},
         {value: 1, question: "Went on a date/hooked up with a Wentworth student"},
