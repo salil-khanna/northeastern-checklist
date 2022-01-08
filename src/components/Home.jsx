@@ -183,7 +183,7 @@ const Home = () => {
 
                                 {viewResults ?
                                 <button type="button" className="btn btn-primary" onClick={() => setViewResults(false)}> Go Back to the Checklist </button> 
-                                : <button type="button" className="btn btn-primary" onClick={() => setViewResults(true)}> View Results </button>}
+                                : <button type="button" className="btn btn-primary" onClick={() => setViewResults(true)}> View All Student Results </button>}
 
                             </div>                
                         </div>

@@ -143,7 +143,7 @@ const Questions = ({buttonPress, allQuestions}) => {
                     }
                     
                     {/* button */}
-                    <button type="button" className="btn btn-primary" onClick={(e) => buttonPress(e, payload)}> Submit data and view results! </button>
+                    <button type="button" className="btn btn-primary" onClick={(e) => buttonPress(e, payload)}> Submit data and view all student results! </button>
 
                 
                 </div>
