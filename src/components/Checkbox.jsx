@@ -9,7 +9,7 @@ const Checkbox = ({value, ifChecked, displayText, number}) => {
         <div>
             
             {/* checkbox */}
-            <input type='checkbox' style={{ margin: 1, marginLeft: 10, marginRight: 9, float: 'left' }} onChange = {(e) => ifChecked(e, value)} />
+            <input type='checkbox' style={{ margin: 1, marginLeft: 10, marginRight: 9, float: 'left' }} onChange = {(e) => ifChecked(e, value, number)} />
             <div style = {{display: 'flex'}} >
                 <h5> 
                     <div style={{  float: 'left' }} >

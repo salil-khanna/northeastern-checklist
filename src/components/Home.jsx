@@ -1,12 +1,34 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useMediaQuery } from 'react-responsive';
 import Questions from './Questions.jsx'
 import Results from './Results.jsx'
+import useFetch from 'react-fetch-hook'
 
 //a home page route with a sandbox logo and a bunch of buttons to redirect to other pages
 const Home = () => {
     const isMobile = useMediaQuery({ query: `(max-width: 992px)` });
     const [viewResults, setViewResults] = useState(false);
+    const [numberOfTakers, setNumberOfTakers] = useState(0)
+    const [dataLoaded, setDataLoaded] = useState(false);
+    // load up useEffect and initialize number of Takers
+
+    //useFetch hook to get all players from the api
+    let heroku = "https://neuchecklistbackend.herokuapp.com/results/"
+    const { loading, error, data } = useFetch(heroku)
+    useEffect(() => {
+        //show loading if the data is still loading
+        if (data === undefined || loading || error) {
+            setNumberOfTakers('(loading...)')
+
+        } else if (data.length === 0) {
+            setNumberOfTakers(0)
+        } 
+        else {
+            setNumberOfTakers(data[0]["responses"])
+        }
+        setDataLoaded(true)
+    }, [data, error, loading])
+
 
     const allQuestions = [
         {value: 1, question: "Cried in Snell library"},
@@ -112,38 +134,73 @@ const Home = () => {
         {value: 1, question: "Have a love hate relationship with Northeastern"},
     ]
 
-    return (
-        <div>
-            {!isMobile && <br /> }
-            <div className="card container text-left">
-                <div className="box-content">
-                    <br/>
-                    
-                    <div className="box-header">
-                        <div className = "text-center">
-                            <h1>The Northeastern Experience Checklist</h1>
-                            {viewResults ?
-                            <p> See how other students completed the checklist!</p>
-                            : <p> Hit the checkboxes on your way down to to see your total score!</p> }
+    const viewChecklistFunction = () => {
+        
+        setViewResults(false);
+        window.scrollTo(0, 0)
+    }
 
-                            {viewResults &&
-                            <button type="button" className="btn btn-primary" onClick={() => setViewResults(false)}> Go Back to the Checklist </button> }
 
-                        </div>                
+    const submitData = (e, payload) => {
+        e.preventDefault();
+        let finalPayload = {"results": payload};
+        console.log(JSON.stringify(finalPayload))
+        // axios.post(url,JSON.stringify(finalPayload)).then(res => {
+        //     console.log(res);
+        //     console.log(res.data);
+        // }).catch(err => {
+        //     console.log(err);
+        //     return alert(err)
+        // })
+        var request = new XMLHttpRequest();
+        request.open('POST', heroku, true);
+        request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        request.send(JSON.stringify(finalPayload));
+        setNumberOfTakers(numberOfTakers+1)
+        setViewResults(true)
+        window.scrollTo(0, 0)
+        
+
+    }
+
+    if (!dataLoaded) {
+        return <div> Loading... </div>
+    } else {
+        return (
+            <div>
+                {!isMobile && <br /> }
+                <div className="card container text-left">
+                    <div className="box-content">
+                        <br/>
+                        
+                        <div className="box-header">
+                            <div className = "text-center">
+                                <h1>The Northeastern Experience Checklist</h1>
+                                <h2>Taken by {numberOfTakers} students</h2>
+                                {viewResults ?
+                                <p> See how other students completed the checklist!</p>
+                                : <p> Hit the checkboxes on your way down to to see your total score!</p> }
+
+                                {viewResults ?
+                                <button type="button" className="btn btn-primary" onClick={() => setViewResults(false)}> Go Back to the Checklist </button> 
+                                : <button type="button" className="btn btn-primary" onClick={() => setViewResults(true)}> View Results </button>}
+
+                            </div>                
+                        </div>
+                        <br/>
+                        {viewResults ? <Results allQuestions = {allQuestions} buttonPress = {viewChecklistFunction} /> 
+                        : <Questions allQuestions = {allQuestions} buttonPress = {submitData} />}
+                        
+                        <br/>
                     </div>
-                    <br/>
-                    {viewResults ? <Results allQuestions = {allQuestions} buttonPress = {() => setViewResults(false)}/> 
-                    : <Questions allQuestions = {allQuestions}/>}
-                    
-                    <br/>
                 </div>
+                {!isMobile && <br /> }
+
+
+
             </div>
-            {!isMobile && <br /> }
-
-
-
-        </div>
-    )
+        )
+    }
 }
 
 export default Home
