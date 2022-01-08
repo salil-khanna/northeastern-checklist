@@ -12,14 +12,24 @@ const Results = ({allQuestions, buttonPress}) => {
     if (error) return <p>Error :(</p>
 
     let newData = {}
+    let totalScore = 0
+    let totalResponses = 0
     for (let i = 0; i < 101; i++) {
         if (data.length === 0) {
             newData[i+1] = 0
         } else {
             let curResult = data[i]
             newData[curResult["id"]] = Number(curResult["checked"] / curResult["responses"] * 100).toFixed(1)
+            if (newData[curResult["id"]] === 62) {
+                totalScore += curResult["checked"] * -1
+            } else {
+                totalScore += curResult["checked"]
+            }
+            
+            totalResponses = curResult["responses"]
         }
     }
+    let averageScore = Number(totalScore / totalResponses).toFixed(1)
 
     return (
         <div className="box-body">
@@ -32,6 +42,7 @@ const Results = ({allQuestions, buttonPress}) => {
                 })}
             
                 <div className = "text-center">
+                    <h3>Average Score: {averageScore} / 100</h3>
                     {/* button */}
                     <button type="button" className="btn btn-primary" onClick={buttonPress}> Go Back to the Checklist </button>
 
