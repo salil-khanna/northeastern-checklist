@@ -176,7 +176,7 @@ const Home = () => {
                         <div className="box-header">
                             <div className = "text-center">
                                 <h1>The Northeastern Experience Checklist</h1>
-                                <h2>Taken by {numberOfTakers} students</h2>
+                                <h2>Taken by {numberOfTakers.toLocaleString()} students</h2>
                                 {viewResults ?
                                 <p> See how other students completed the checklist!</p>
                                 : <p> Hit the checkboxes on your way down to to see your total score!</p> }
