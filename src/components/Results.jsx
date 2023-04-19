@@ -4,7 +4,7 @@ import useFetch from 'react-fetch-hook'
 
 const Results = ({allQuestions, buttonPress}) => {
 
-    let heroku = "https://northeastern-checklist.onrender.com/results/"
+    const heroku = process.env.API_LINK;
     const { loading, error, data } = useFetch(heroku)
     
     if (data === undefined) return <p>Loading...</p>
