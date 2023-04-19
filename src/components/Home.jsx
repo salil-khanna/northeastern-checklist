@@ -13,7 +13,7 @@ const Home = () => {
     // load up useEffect and initialize number of Takers
 
     //useFetch hook to get all players from the api
-    const heroku = process.env.API_LINK;
+    const heroku = process.env.REACT_APP_API_LINK;
     console.log(heroku);
     const { loading, error, data } = useFetch(heroku)
     useEffect(() => {
