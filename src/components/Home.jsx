@@ -13,7 +13,7 @@ const Home = () => {
     // load up useEffect and initialize number of Takers
 
     //useFetch hook to get all players from the api
-    let heroku = "https://neuchecklistbackend.herokuapp.com/results/"
+    let heroku = "https://northeastern-checklist.onrender.com/results/"
     const { loading, error, data } = useFetch(heroku)
     useEffect(() => {
         //show loading if the data is still loading
